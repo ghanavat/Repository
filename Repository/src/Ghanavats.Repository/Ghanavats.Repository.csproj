@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+
+        <Authors>Saeed Ghanavat</Authors>
+        <Description>A repository implementation package of Ghanavats.Repository.Abstractions based on Entity Framework Core Sql Server.</Description>
+
+        <PackageId>Ghanavats.Repository</PackageId>
+        <Title>Ghanavats.Repository</Title>
+        <PackageTags>repository-pattern;repository;ddd</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://abcd.com</RepositoryUrl>
+        <Version>1.0.2</Version>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\..\Repository.Abstractions\src\Repository.Abstractions\Ghanavats.Repository.Abstractions.csproj"/>
+    </ItemGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.11"/>
+        <PackageReference Include="NuGet.Versioning"/>
+
+        <None Include="docs\README.md" Pack="True" PackagePath=""/>
+        <None Include="LICENSE" Pack="True" PackagePath=""/>
+    </ItemGroup>
+
+</Project>

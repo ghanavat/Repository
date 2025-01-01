@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+        
+        <Authors>Saeed Ghanavat</Authors>
+        <Description>A repository abstraction package for common repository operations.</Description>
+
+        <PackageId>Ghanavats.Repository.Abstractions</PackageId>
+        <Title>Ghanavats.Repository.Abstractions</Title>
+        <PackageTags>repository-pattern;repository;ddd;abstractions</PackageTags>
+        <RepositoryType>git</RepositoryType>
+        <RepositoryUrl>https://abcdef.com</RepositoryUrl>
+        <Version>1.0.2</Version>
+    </PropertyGroup>
+    
+    <ItemGroup>
+        <None Include="docs\README.md" Pack="True" PackagePath=""/>
+        <None Include="LICENSE" Pack="True" PackagePath=""/>
+    </ItemGroup>
+    
+</Project>
