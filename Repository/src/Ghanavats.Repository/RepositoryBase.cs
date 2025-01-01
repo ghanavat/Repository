@@ -64,15 +64,3 @@ public abstract class RepositoryBase<T> : IRepository<T>
         throw new NotImplementedException();
     }
 }
-
-// TODO: Remove from this package. This needs to defined in the application Infrastructure layer
-/// <summary>
-/// Do not use. This is a marker class to allow IRepository to be registered in composition root.
-/// </summary>
-/// <typeparam name="T">An entity to which the repository operations will be implemented for</typeparam>
-public class MarkerRepository<T> : RepositoryBase<T> where T : class
-{
-    public MarkerRepository(DbContext context) 
-        : base(context)
-    { }
-}
