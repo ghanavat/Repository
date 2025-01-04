@@ -6,10 +6,10 @@ name: .NET CI pipeline
 on:
   push:
     branches: [ "main" ]
-    paths: ["Repository/src/**"]
+    paths: ["**/src/**"]
   pull_request:
     branches: [ "main" ]
-    paths: ["Repository.Abstractions/src/**"]
+    paths: ["**/src/**"]
   workflow_dispatch:
 
 jobs:
