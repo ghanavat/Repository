@@ -3,13 +3,13 @@
 name: Publish to NuGet Org
 
 on:
-#  workflow_run:
-#    workflows: [".NET CI pipeline"]
-#    types:
-#      - completed
+  #  workflow_run:
+  #    workflows: [".NET CI pipeline"]
+  #    types:
+  #      - completed
   release:
     types: [ published ]
-  
+
 jobs:
   pack:
     runs-on: ubuntu-latest
@@ -25,6 +25,4 @@ jobs:
       - name: Pack
         run: dotnet pack Ghanavats.Repository.sln --configuration Release --no-build --no-restore --output .
       - name: Push to NuGet Org
-        env:
-          NUGET_APIKEY: ${{secrets.NUGET_APIKEY}}
-        run: dotnet nuget push "*.nupkg" --api-key %NUGET_APIKEY% --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_APIKEY}} --source https://api.nuget.org/v3/index.json
