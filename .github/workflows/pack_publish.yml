@@ -1,0 +1,31 @@
+# This workflow will publish Nuget package to NuGet Org when/if '.Net CI pipeline' workflow completed successfully.
+
+name: Publish to NuGet Org
+
+on:
+  workflow_run:
+#    inputs:
+#      apiKey:
+#        description: 'Api Key to push new package to NuGet Org'
+#        default: ''
+#        required: true
+    workflows: [".NET CI pipeline"]
+    types:
+      - completed
+  release:
+    types: [ published ]   
+  
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 8.0.x
+      - name: Pack
+        run: dotnet pack Ghanavats.Repository.sln --configuration Release --no-build --no-restore --output .
+      - name: Push to NuGet Org
+        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_APIKEY}} --source https://api.nuget.org/v3/index.json
