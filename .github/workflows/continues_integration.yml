@@ -6,12 +6,8 @@ name: .NET CI pipeline
 on:
   push:
     branches: [ main ]
-    paths:
-      - '*'
   pull_request:
     branches: [ main ]
-    paths: 
-      - '*'
   workflow_dispatch:
 
 jobs:
