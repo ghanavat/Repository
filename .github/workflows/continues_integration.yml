@@ -7,10 +7,10 @@ on:
   workflow_dispatch:
   push:
     branches: [ "main" ]
-    paths: ["src/**"]
+    paths: ["Repository/src/**"]
   pull_request:
     branches: [ "main" ]
-    paths: ["src/**"]
+    paths: ["Repository.Abstractions/src/**"]
 
 jobs:
   build:
