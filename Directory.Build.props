@@ -1,8 +1,6 @@
 <Project>
 
     <PropertyGroup>
-        <Company>Ghanavas - ghanavats.co.uk</Company>
-
         <LangVersion>12</LangVersion>
         <Nullable>enable</Nullable>
         <ImplicitUsings>enable</ImplicitUsings>
