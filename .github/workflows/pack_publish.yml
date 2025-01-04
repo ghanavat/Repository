@@ -27,4 +27,4 @@ jobs:
       - name: Push to NuGet Org
         env:
           NUGET_APIKEY: ${{secrets.NUGET_APIKEY}}
-        run: dotnet nuget push "*.nupkg" --api-key ${{NUGET_APIKEY}} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "*.nupkg" --api-key %NUGET_APIKEY% --source https://api.nuget.org/v3/index.json
