@@ -4,11 +4,6 @@ name: Publish to NuGet Org
 
 on:
   workflow_run:
-#    inputs:
-#      apiKey:
-#        description: 'Api Key to push new package to NuGet Org'
-#        default: ''
-#        required: true
     workflows: [".NET CI pipeline"]
     types:
       - completed

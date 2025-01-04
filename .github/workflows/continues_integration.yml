@@ -4,13 +4,13 @@
 name: .NET CI pipeline
 
 on:
-  workflow_dispatch:
   push:
     branches: [ "main" ]
     paths: ["Repository/src/**"]
   pull_request:
     branches: [ "main" ]
     paths: ["Repository.Abstractions/src/**"]
+  workflow_dispatch:
 
 jobs:
   build:
