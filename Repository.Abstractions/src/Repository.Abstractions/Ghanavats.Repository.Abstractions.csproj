@@ -10,8 +10,10 @@
         <Title>Ghanavats.Repository.Abstractions</Title>
         <PackageTags>repository-pattern;repository;ddd;abstractions</PackageTags>
         <RepositoryType>git</RepositoryType>
-        <RepositoryUrl>https://abcdef.com</RepositoryUrl>
+        <RepositoryUrl>https://github.com/ghanavat/Repository</RepositoryUrl>
         <Version>1.0.0</Version>
+
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
     </PropertyGroup>
     
     <ItemGroup>
