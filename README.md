@@ -23,19 +23,29 @@ With its modular design, Ghanavats.Repository empowers developers to use its com
 1. Install the Packages:
     
     Add the desired NuGet packages to your project:
-    * For abstractions: `dotnet add package Ghanavats.Repository.Abstractions`
-    * For EF Core implementation: `dotnet add package Ghanavats.Repository`
+    * For abstractions:
+      ```
+      dotnet add package Ghanavats.Repository.Abstractions
+      ```
+    * For EF Core implementation:
+      ```
+      dotnet add package Ghanavats.Repository
+      ```
 
 2. Choose Your Approach:
     * Use **Ghanavats.Repository** for EF Core-based projects. 
     * Implement your custom repository logic by referencing **Ghanavats.Repository.Abstractions**.
 
 3. Define Your Domain:
-Use the provided interfaces to set up repositories for your domain entities, ensuring a clean, maintainable architecture.
+Use the provided interfaces to set up repositories for your domain entities, 
+ensuring a clean, maintainable architecture.
 
-## Future Roadmap
-* MongoDB Support: Expanding the framework to include NoSQL database support, providing greater flexibility and enabling hybrid application scenarios.
-* Advanced Features: Planned enhancements include custom query builders, caching support, and more.
+## Ongoing Development
+
+Ghanavats.Repository is an actively maintained and continuously evolving solution. 
+We are committed to enhancing its functionality 
+and ensuring it remains a versatile and reliable framework for data access needs. 
+Community feedback and suggestions are highly valued as we work to make this library even more robust and feature-rich.
 
 ## Contributing
 We welcome contributions to enhance the Ghanavats.Repository framework! 
