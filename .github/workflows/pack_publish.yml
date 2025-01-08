@@ -25,4 +25,4 @@ jobs:
       - name: Pack
         run: dotnet pack Ghanavats.Repository.sln --configuration Release --no-build --no-restore --output .
       - name: Push to NuGet Org
-        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_APIKEY}} --source https://api.nuget.org/v3/index.json
+        run: dotnet nuget push "*.nupkg" --api-key ${{secrets.NUGET_APIKEY}} --source https://api.nuget.org/v3/index.json --skip-duplicate
