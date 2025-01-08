@@ -38,29 +38,29 @@ public abstract class RepositoryBase<T> : IRepository<T>
     }
 
     /// <inheritdoc/>
-    public virtual Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
+    public virtual async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        _dbContext.Set<T>().Remove(entity);
+        await _dbContext.SaveChangesAsync(cancellationToken);
     }
 
     /// <inheritdoc/>
     public virtual async Task<T?> GetByIdAsync<TId>(TId id, CancellationToken cancellationToken = default)
         where TId : notnull
     {
-        var result = await _dbContext.Set<T>().FindAsync([id], cancellationToken);
-        return result;
+        return await _dbContext.Set<T>().FindAsync([id], cancellationToken);
     }
 
     /// <inheritdoc/>
-    public virtual Task<List<T>> ListAsync(CancellationToken cancellationToken = default)
+    public virtual async Task<List<T>> ListAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Set<T>().ToListAsync(cancellationToken: cancellationToken);
     }
 
     /// <inheritdoc/>
-    public virtual Task<List<T>> ListAsync(Expression<Func<T, bool>> predicate,
+    public virtual async Task<List<T>> ListAsync(Expression<Func<T, bool>> predicate,
         CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await _dbContext.Set<T>().Where(predicate).ToListAsync(cancellationToken);
     }
 }

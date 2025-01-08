@@ -31,7 +31,7 @@ public interface IReadRepository<T> where T : class
     Task<List<T>> ListAsync(CancellationToken cancellationToken = default);
 
     /// <summary>
-    /// Finds all entities of <typeparamref name="T" />, that matches the predicate of the
+    /// Finds all entities of <typeparamref name="T" />, that matches the predicate
     /// </summary>
     /// <param name="predicate"></param>
     /// <param name="cancellationToken"></param>
