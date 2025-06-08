@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFrameworks>net8.0;netstandard2.0</TargetFrameworks>
+        <TargetFrameworks>net9.0;netstandard2.0</TargetFrameworks>
 
-        <Company>Ghanavas - https://ghanavats.co.uk</Company>
+        <Company>Ghanavas - https://ghanavats.tech</Company>
         <Authors>Saeed Ghanavat</Authors>
         <Description>A repository abstraction package for common repository operations.</Description>
 
@@ -12,7 +12,7 @@
         <PackageTags>repository-pattern;repository;ddd;abstractions</PackageTags>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/ghanavat/Repository</RepositoryUrl>
-        <Version>1.0.1</Version>
+        <Version>1.1.0</Version>
 
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>net8.0</TargetFramework>
+        <TargetFramework>net9.0</TargetFramework>
         
-        <Company>Ghanavas - https://ghanavats.co.uk</Company>
+        <Company>Ghanavas - https://ghanavats.tech</Company>
         <Authors>Saeed Ghanavat</Authors>
         <Description>A repository implementation package of Ghanavats.Repository.Abstractions based on Entity Framework Core Sql Server.</Description>
 
@@ -12,7 +12,7 @@
         <PackageTags>repository-pattern;repository;ddd</PackageTags>
         <RepositoryType>git</RepositoryType>
         <RepositoryUrl>https://github.com/ghanavat/Repository</RepositoryUrl>
-        <Version>1.0.2</Version>
+        <Version>1.1.0</Version>
         
         <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -24,7 +24,6 @@
 
     <ItemGroup>
         <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
-        <PackageReference Include="NuGet.Versioning"/>
 
         <None Include="docs\README.md" Pack="True" PackagePath=""/>
         <None Include="LICENSE" Pack="True" PackagePath=""/>

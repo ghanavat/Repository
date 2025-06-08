@@ -22,6 +22,20 @@ public interface IReadRepository<T> where T : class
     Task<T?> GetByIdAsync<TId>(TId id, CancellationToken cancellationToken = default) where TId : notnull;
 
     /// <summary>
+    /// Finds an entity with given id.
+    /// It also includes related entities to the query
+    /// </summary>
+    /// <param name="id">The id that the query is matched against</param>
+    /// <param name="includes">A list of related entities</param>
+    /// <param name="cancellationToken"></param>
+    /// <typeparam name="TId">The generic type of id.</typeparam>
+    /// <returns></returns>
+    Task<T?> GetByIdAsync<TId>(TId id, 
+        Expression<Func<T, object>>[] includes, 
+        CancellationToken cancellationToken = default)
+        where TId : notnull;
+
+    /// <summary>
     /// Finds all entities of <typeparamref name="T" /> from the database.
     /// </summary>
     /// <returns>

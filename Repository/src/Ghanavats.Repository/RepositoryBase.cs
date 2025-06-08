@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Ghanavats.Repository;
 
 /// <inheritdoc/>
-public abstract class RepositoryBase<T> : IRepository<T> 
+public abstract class RepositoryBase<T> : IRepository<T>
     where T : class
 {
     private readonly DbContext _dbContext;
@@ -49,6 +49,22 @@ public abstract class RepositoryBase<T> : IRepository<T>
         where TId : notnull
     {
         return await _dbContext.Set<T>().FindAsync([id], cancellationToken);
+    }
+
+    /// <inheritdoc/>
+    public virtual async Task<T?> GetByIdAsync<TId>(TId id, 
+        Expression<Func<T, object>>[] includes, 
+        CancellationToken cancellationToken = default)
+        where TId : notnull
+    {
+        IQueryable<T> dbSet = _dbContext.Set<T>();
+
+        foreach (var includeItem in includes)
+        {
+            dbSet = dbSet.Include(includeItem);
+        }
+
+        return await dbSet.FirstOrDefaultAsync(x => EF.Property<TId>(x, "Id").Equals(id), cancellationToken);
     }
 
     /// <inheritdoc/>
