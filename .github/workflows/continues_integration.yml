@@ -25,9 +25,7 @@ jobs:
       run: dotnet restore
     - name: Build
       run: dotnet build Ghanavats.Repository.sln --configuration Release
-    - name: Install Docker
-      run: |
-          brew update
-          brew install docker
+    - name: Install/Setup Docker
+      uses: docker/setup-docker-action@v4
     - name: Test
       run: dotnet test Repository/tests/Ghanavats.Repository.Tests/Ghanavats.Repository.Tests.csproj
