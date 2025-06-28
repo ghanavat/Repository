@@ -23,7 +23,7 @@ public interface IReadRepository<T> where T : class
 
     /// <summary>
     /// Finds an entity with given id.
-    /// It also includes related entities to the query
+    /// It also optionally includes related entities to the query
     /// </summary>
     /// <param name="id">The id that the query is matched against</param>
     /// <param name="includes">A list of related entities</param>

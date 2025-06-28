@@ -1,5 +1,6 @@
 ﻿using System.Linq.Expressions;
 using Ghanavats.Repository.Abstractions;
+using Ghanavats.Repository.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ghanavats.Repository;
@@ -16,7 +17,7 @@ public abstract class RepositoryBase<T> : IRepository<T>
     /// <param name="dbContext">EF DB Context dependency</param>
     protected RepositoryBase(DbContext dbContext)
     {
-        _dbContext = dbContext;
+        _dbContext = dbContext.CheckForNull();
     }
 
     /// <inheritdoc/>
