@@ -6,6 +6,4 @@ namespace Ghanavats.Repository.Tests.DummyData;
 /// </summary>
 /// <param name="context"></param>
 /// <typeparam name="T"></typeparam>
-public class DummyRepository<T>(DummyDbContext context) : RepositoryBase<T>(context) where T : class
-{
-}
+public class DummyRepository<T>(DummyDbContext context) : RepositoryBase<T>(context) where T : class;

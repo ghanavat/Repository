@@ -67,7 +67,7 @@ public abstract class RepositoryBase<T> : IRepository<T>
 
         return await dbSet.FirstOrDefaultAsync(x => EF.Property<TId>(x, "Id").Equals(id), cancellationToken);
     }
-
+    
     /// <inheritdoc/>
     public virtual async Task<List<T>> ListAsync(CancellationToken cancellationToken = default)
     {

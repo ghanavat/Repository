@@ -66,7 +66,7 @@ public class RepositoryBaseTests : DummyDbSetup
             TestProperty = "TestValue_Winter"
         };
         
-        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataFor());
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
         
         //act
         var actual = await dummyRepository.UpdateAsync(entity);
@@ -81,5 +81,97 @@ public class RepositoryBaseTests : DummyDbSetup
             .Where(x => x.Id == entity.Id)
             .Select(x => x.TestProperty).FirstOrDefault()
             .ShouldBeSameAs(actual.TestProperty);
+    }
+    
+    [Fact]
+    internal async Task ShouldCorrectlyDeleteAnItem()
+    {
+        //arrange
+        var dummyRepository = new DummyRepository<TestEntity>(DbContextForTest);
+        var entity = new TestEntity
+        {
+            Id = 3
+        };
+        
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
+        
+        //act
+        await dummyRepository.DeleteAsync(entity);
+        
+        //assert
+        var allRecordsOfTheEntity = await DbContextForTest.TestEntities.ToListAsync();
+        var deletedRecordResult = allRecordsOfTheEntity
+            .Any(x => x.Id == entity.Id);
+        deletedRecordResult.ShouldBeFalse();
+    }
+    
+    [Fact]
+    internal async Task ShouldCorrectlyRetrieveAnItemById()
+    {
+        //arrange
+        var dummyRepository = new DummyRepository<TestEntity>(DbContextForTest);
+        var expectedId = 5;
+        
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
+        
+        //act
+        var actual = await dummyRepository.GetByIdAsync(expectedId);
+        
+        //assert
+        actual.ShouldNotBeNull();
+        actual.Id.ShouldBe(expectedId);
+    }
+    
+    [Fact]
+    internal async Task ShouldCorrectlyRetrieveAnItemByIdAndIncludeNavigationType()
+    {
+        //arrange
+        var dummyRepository = new DummyRepository<TestEntity>(DbContextForTest);
+        var expectedId = 1;
+        
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
+        
+        //act
+        var actual = await dummyRepository.GetByIdAsync(expectedId, [x => x.TestEntityChildren]);
+        
+        //assert
+        actual.ShouldNotBeNull();
+        actual.Id.ShouldBe(expectedId);
+
+        var testEntityChildren = actual.TestEntityChildren.ToList();
+        testEntityChildren.ShouldNotBeEmpty();
+        testEntityChildren[0].TestEntityId.ShouldBe(expectedId);
+    }
+    
+    [Fact]
+    internal async Task ShouldCorrectlyRetrieveAllItems()
+    {
+        //arrange
+        var dummyRepository = new DummyRepository<TestEntity>(DbContextForTest);
+        
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
+        
+        //act
+        var actual = await dummyRepository.ListAsync();
+        
+        //assert
+        actual.ShouldNotBeNull();
+        actual.ShouldNotBeEmpty();
+    }
+    
+    [Fact]
+    internal async Task ShouldCorrectlyRetrieveAllItemsWithPredicate()
+    {
+        //arrange
+        var dummyRepository = new DummyRepository<TestEntity>(DbContextForTest);
+        
+        await SeedDataAsync(DummyRepositoryBaseTestsData.GetRangeOfSeedingDataForTestEntity());
+        
+        //act
+        var actual = await dummyRepository.ListAsync(predicate => predicate.TestEntityChildren.Any(x => x.ChildName == "ChildFebruary")); //ChildFebruary
+        
+        //assert
+        actual.ShouldNotBeNull();
+        actual.ShouldNotBeEmpty();
     }
 }
