@@ -59,6 +59,7 @@ public class DummyDbSetup : IAsyncLifetime
             .WithPassword("P@ssw0rd_123")
             .WithPortBinding(1433, true)
             .WithReuse(false)
+            .WithCleanUp(true)
             .Build();
     }
 }
