@@ -26,4 +26,4 @@ jobs:
     - name: Build
       run: dotnet build Ghanavats.Repository.sln --configuration Release
     - name: Test
-      run: dotnet test Repository/tests/Ghanavats.Repository.Tests/Ghanavats.Repository.Tests.csproj
+      run: dotnet test Repository/tests/Ghanavats.Repository.Tests/Ghanavats.Repository.Tests.csproj --framework net10.0
